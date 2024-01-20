@@ -90,15 +90,15 @@ def data_generator(response):
 #             return StreamingResponse(data_generator(response), media_type='text/event-stream')
 #     return response
 
-@app.get("/protected-endpoint")
-async def protected_endpoint(api_key: str = Depends(user_api_keys)):
-    return {"message": "Access granted to the protected endpoint"}
+# @app.get("/protected-endpoint")
+# async def protected_endpoint(api_key: str = Depends(user_api_keys)):
+#     return {"message": "Access granted to the protected endpoint"}
 
-async def get_api_key(x_api_key: str = Header(None)):
-    expected_api_key = "your_actual_api_key"  # Replace with your actual API key
-    if x_api_key != expected_api_key:
-        raise HTTPException(status_code=401, detail="Invalid API Key")
-    return x_api_key
+# async def get_api_key(x_api_key: str = Header(None)):
+#     expected_api_key = "your_actual_api_key"  # Replace with your actual API key
+#     if x_api_key != expected_api_key:
+#         raise HTTPException(status_code=401, detail="Invalid API Key")
+#     return x_api_key
 
 @app.get("/models/available")
 def get_available_models():
